@@ -25,26 +25,26 @@ int main()
   }
   else{
     do{
-    cout << "File provided cannot be properly read as a bitmap image, the file must be a 24 bit depth Windows BMP file. Enter valid file name." << endl;
-    cin >> fileName;
-    image.open(fileName);
-    validBmp = image.isImage();
-    }
+      cout << "File provided cannot be properly read as a bitmap image, the file must be a 24 bit depth Windows BMP file. Enter valid file name." << endl;
+      cin >> fileName;
+      image.open(fileName);
+      validBmp = image.isImage();
+      }
     while(validBmp == false);
       bmp = image.toPixelMatrix();
   }
   cout << fileName << " has been loaded. It is " << bmp[0].size() <<" pixels wide and "<< bmp.size() << " pixels high." << endl;
   // Ask if you want film grain on the photo
-/*  cout << "Would you like film grain on the photo? (Y/N)" << endl;
+  cout << "Would you like film grain on the photo? (Y/N)" << endl;
   string choiceGrain;
+  int amtGrain;
   cin >> choiceGrain;
   if (choiceGrain == "y" || choiceGrain == "Y")
   {
     cout << "How much grain would you like? (0-100)" << endl;
-    int amtGrain;
     cin >> amtGrain;
   } 
-*/
+
   // Go through row 1 of image and repeat for as many rows there are
   for (int row = 0; row < bmp.size(); row++)
   {
@@ -56,13 +56,17 @@ int main()
       int sum = rgb.red + rgb.green + rgb.blue;
       int avg = sum / 3;
   // Apply the grain to photo
-/*      if ( choiceGrain == "y" || choiceGrain == "Y" )
+      if ( choiceGrain == "y" || choiceGrain == "Y" )
       {
-        int amtGrain;
-        amtGrain = ( rand() % amtGrain);
-               cout << "amt grain is : " << amtGrain << endl;
+        int grain;
+        grain = ( rand() % amtGrain);
+        grain = grain * 2.55;
+        avg = avg + grain;
+        if(avg > 255)
+        {avg = 255;
+        }
       }
-*/
+
   // Change pixel from a R,G,B image to a grayscale image from 0 - 255
       rgb.red = avg;
       rgb.green = avg;
