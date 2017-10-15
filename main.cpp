@@ -18,7 +18,21 @@ int main()
   cin >> fileName;
   // Open File
   image.open(fileName);
-  bmp = image.toPixelMatrix();
+  bool validBmp = image.isImage();
+  if( validBmp == true)
+  {
+    bmp = image.toPixelMatrix();
+  }
+  else{
+    do{
+    cout << "File provided cannot be properly read as a bitmap image, the file must be a 24 bit depth Windows BMP file. Enter valid file name." << endl;
+    cin >> fileName;
+    image.open(fileName);
+    validBmp = image.isImage();
+    }
+    while(validBmp == false);
+      bmp = image.toPixelMatrix();
+  }
   cout << fileName << " has been loaded. It is " << bmp[0].size() <<" pixels wide and "<< bmp.size() << " pixels high." << endl;
   // Ask if you want film grain on the photo
 /*  cout << "Would you like film grain on the photo? (Y/N)" << endl;
