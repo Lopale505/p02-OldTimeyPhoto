@@ -55,7 +55,7 @@ int main()
       rgb = bmp[row][column];
       int sum = rgb.red + rgb.green + rgb.blue;
       int avg = sum / 3;
-  // Apply the grain to photo
+  // Apply the grain to pixel if desired
       if ( choiceGrain == "y" || choiceGrain == "Y" )
       {
         int grain;
@@ -75,7 +75,7 @@ int main()
     }
   }
   image.fromPixelMatrix(bmp);
-  image.save("oldTimeyPhoto.bmp");
+  image.save("oldTimey.bmp");
  
 
 
