@@ -29,9 +29,9 @@ int main()
       cin >> fileName;
       image.open(fileName);
       validBmp = image.isImage();
-      }
+    }
     while(validBmp == false);
-      bmp = image.toPixelMatrix();
+    bmp = image.toPixelMatrix();
   }
   cout << fileName << " has been loaded. It is " << bmp[0].size() <<" pixels wide and "<< bmp.size() << " pixels high." << endl;
   // Ask if you want film grain on the photo
@@ -49,13 +49,13 @@ int main()
   for (int row = 0; row < bmp.size(); row++)
   {
 
-  // Go through column in row and repeat for how many columns(pixels)  there are
+    // Go through column in row and repeat for how many columns(pixels)  there are
     for (int column = 0; column < bmp[row].size(); column++)
     {
       rgb = bmp[row][column];
       int sum = rgb.red + rgb.green + rgb.blue;
       int avg = sum / 3;
-  // Apply the grain to pixel if desired
+      // Apply the grain to pixel if desired
       if ( choiceGrain == "y" || choiceGrain == "Y" )
       {
         int grain;
@@ -67,7 +67,7 @@ int main()
         }
       }
 
-  // Change pixel from a R,G,B pixel to a grayscale pixel from 0 - 255
+      // Change pixel from a R,G,B pixel to a grayscale pixel from 0 - 255
       rgb.red = avg;
       rgb.green = avg;
       rgb.blue = avg;
@@ -76,8 +76,8 @@ int main()
   }
   image.fromPixelMatrix(bmp);
   image.save("oldTimey.bmp");
- 
+
 
 
   return 0;
-  }
+}
