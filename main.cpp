@@ -67,7 +67,7 @@ int main()
         }
       }
 
-  // Change pixel from a R,G,B image to a grayscale image from 0 - 255
+  // Change pixel from a R,G,B pixel to a grayscale pixel from 0 - 255
       rgb.red = avg;
       rgb.green = avg;
       rgb.blue = avg;
